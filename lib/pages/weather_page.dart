@@ -36,7 +36,7 @@ class _WeatherPageState extends State<WeatherPage> {
     if (mainCondition == null) return 'assets/sunny.json'; // default
 
     switch (mainCondition.toLowerCase()) {
-      case 'cloudy':
+      case 'clouds':
         return 'assets/cloudy.json';
       case 'mist':
       case 'smoke':
