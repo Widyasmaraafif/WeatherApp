@@ -12,24 +12,24 @@ class WeatherPage extends StatefulWidget {
 
 class _WeatherPageState extends State<WeatherPage> {
   // API KEY
-  final _WeatherService = WeatherServices('YOUR_API_KEY');
+  final _WeatherService = WeatherServices('40890bd3c8e75a18106c02ae2c9011a4');
   Weather? _weather;
 
   // Fetch weather
   _fetchWeather() async {
-    // get the current city
+  try {
     String cityName = await _WeatherService.getCurrentCity();
+    print("City: $cityName");  // Debug nama kota
 
-    // get weather for city
-    try {
-      final weather = await _WeatherService.getWeather(cityName);
-      setState(() {
-        _weather = weather;
-      });
-    } catch (e) {
-      print(e);
-    }
+    final weather = await _WeatherService.getWeather(cityName);
+    setState(() {
+      _weather = weather;
+    });
+  } catch (e) {
+    print("Error fetching weather: $e");  // Tampilkan error di log
   }
+}
+
 
   // Weather animations
   String getWeatherCondition(String? mainCondition) {
